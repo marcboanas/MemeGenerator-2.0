@@ -23,6 +23,8 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.reloadData()
     }
     
+    // MARK: UITableViewData Source Methods
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -48,6 +50,17 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         }
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let meme = memes[indexPath.row]
+        detailViewController.meme = meme
+        
+        // Hides tab bar when pushed to detail controller
+        detailViewController.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     // Editing Table Cells

@@ -59,6 +59,17 @@ class MemeCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let meme = memes[indexPath.row]
+        detailViewController.meme = meme
+        
+        // Hides tab bar when pushed to detail controller
+        detailViewController.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
     // Fetch Core Data
     
     func getData() {
