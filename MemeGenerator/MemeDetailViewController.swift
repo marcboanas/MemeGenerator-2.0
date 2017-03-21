@@ -16,14 +16,10 @@ class MemeDetailViewController: UIViewController {
     
     @IBOutlet weak var memeImageView: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        memeImageView.image = UIImage(data: meme.memedImage! as Data)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         memeImageView.contentMode = .scaleAspectFit
+        memeImageView.image = UIImage(data: meme.memedImage! as Data)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

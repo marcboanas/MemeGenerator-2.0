@@ -43,7 +43,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         } else {
             imagePickerController.sourceType = .photoLibrary
         }
-        //imagePickerController.allowsEditing = true
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
